@@ -8,7 +8,7 @@ export class GetProblemSolvingCompetencyController {
     private getProblemSolvingCompetencyService: GetProblemSolvingCompetencyService,
   ) {}
 
-  @Get('/users/:userId/problem-solving-competency')
+  @Get('/users/:userId/competencies/problem-solving')
   async getProblemSolvingCompetency(
     @Param('userId') userId: string,
   ): Promise<ProblemSolvingCompetencyDto> {
