@@ -1,11 +1,17 @@
 ## Description
 - AI 기반 취업 컨설팅 백엔드 저장소
-- Node.js, MySQL/TypeORM
+- Node.js, MySQL/TypeORM 
 
 ## Installation
 
 ```bash
 $ yarn install
+```
+
+## Running docker-compose
+
+```bash
+$ docker-compose up -d
 ```
 
 ## Running the app
