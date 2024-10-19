@@ -1,30 +1,6 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
-
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
-
 ## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- AI 기반 취업 컨설팅 백엔드 저장소
+- Node.js, MySQL/TypeORM
 
 ## Installation
 
@@ -45,29 +21,85 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
-## Test
 
-```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+## ERD
+```mermaid
+erDiagram
+		User ||--o{ UserCareer : has
+        UserCareer ||--|{ UserCareerDetail : has
+		User ||--o{ UserEducation : has
+		User ||--o{ UserPositionFitness : analyze
+		User ||--o{ UserPositionAnalysis : analyze
+		UserPositionFitness ||--|| CompanyPosition : target
+		UserPositionAnalysis |{--|| CompanyPosition : target
+		CompanyPosition ||--o{ CompanyPositionDetail : has
+		Company ||--o{ CompanyPosition : has
+		User {
+			string id "식별자"
+			string email "이름"
+			string password "암호화된 비밀번호"
+			string birthDate "생년월일(YYMMDD)"
+		}
+		UserCareer {
+		    string id "식별자"
+			string userId "사용자 식별자"
+			string companyName "회사명"
+			Date startDate "근무시작일(ISO string)"
+            Date endDate "근무종료일(ISO string)"
+			string status "재직 상태 예) IN_OFFICE, RESIGNED"
+			string businessCategory "업종 분류 예) 이커머스 서비스"
+		}
+		UserCareerDetail {
+            string id "식별자"
+            string userCareerId "사용자 경력 식별자"
+            Date startDate "시작일(ISO string)"
+            Date endDate "종료일(ISO string)"
+            string title "제목 예) 실시간 인기 순위 조회 개발"
+            string content "내용 예) 어떤 언어와 기술을 사용하여 개발하였는지 기술"
+        }
+		UserEducation {
+            string id "식별자"
+			string userId "사용자 식별자"
+			string schoolName "학교명"
+			Date startDate "입학일(ISO string)"
+			Date endDate "졸업일(ISO string)"
+			string degree "학위 예) HighSchool(고등), Bachelor(학사), Master(석사), Doctorate(박사)"
+			string status "재학 상태 예) IN_SCHOOL, GRADUATED"
+			string content "상세 내용 예) 전공, 부전공, 학점, 졸업논문"
+		}
+		CompanyPosition {
+			string id "식별자"
+			string companyId "회사 식별자"
+			string name "포지션 이름 예) Backend Engineer"
+			float minCareerLevel "최소 연차 예) 1(년)"
+			float maxCareerLevel "최대 연차 예) 3(년)"
+            string minEducationLevel "학력 예) HighSchool(고등), Bachelor(학사), Master(석사), Doctorate(박사)"
+		}
+		CompanyPositionDetail {
+			string id "식별자"
+			string companyPositionId "회사 포지션 식별자"
+			string type "내용 종류 예) required, optional, tag"
+			string content "내용 예) 이러이러한 기술에 대한 깊은 이해가 필요합니다."
+		}
+		UserPositionFitness {
+			string id "식별자"
+			string userId "사용자 식별자"
+			string positionId "포지션 식별자"
+			float careerLevel "연차 일치도 예) 0.512323"
+			boolean educationLevel "최소학력 만족 여부"
+			float businessCategoryLevel "업종 일치도 예) 0.512323"
+		}
+		UserPositionAnalysis {
+			string id "식별자"
+			string userId "사용자 식별자"
+			string positionId "포지션 식별자"
+			string type "분석 종류 예) duty(직무), resume(이력서)"
+			string content "분석 내용 예) 직무 분석 결과 이러이러한 부분에 대한 보완이 필요합니다."
+		}
+		Company {
+			string id "식별자"
+			string name "이름"
+			string logo "로고 이미지 주소 예) https://static.toss.im/icons/svg/logo-toss-blue.svg"
+			string businessCategory "업종 분류 예) 이커머스 서비스"
+		}
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
