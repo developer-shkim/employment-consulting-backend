@@ -1,15 +1,13 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { SignUpDto } from './dtos/sign-up.dto';
 import { UserDto } from '../../dtos/user.dto';
-import { randomUUID } from 'crypto';
+import { SignUpService } from './sign-up.service';
 
 @Controller()
 export class SignUpController {
+  constructor(private signUpService: SignUpService) {}
   @Post('/auth/sign-up')
   async signUp(@Body() signUpDto: SignUpDto): Promise<UserDto> {
-    const id = randomUUID();
-    const { name, email, birthDate } = signUpDto;
-
-    return new UserDto(id, name, email, birthDate);
+    return await this.signUpService.signUp(signUpDto);
   }
 }
