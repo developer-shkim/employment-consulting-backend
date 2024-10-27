@@ -8,6 +8,6 @@ export class SignUpController {
   constructor(private signUpService: SignUpService) {}
   @Post('/auth/sign-up')
   async signUp(@Body() signUpDto: SignUpDto): Promise<UserDto> {
-    return await this.signUpService.signUp(signUpDto);
+    return new UserDto(await this.signUpService.signUp(signUpDto));
   }
 }

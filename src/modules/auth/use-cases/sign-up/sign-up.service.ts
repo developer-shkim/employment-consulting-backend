@@ -1,14 +1,19 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { randomUUID } from 'crypto';
+import * as bcrypt from 'bcrypt';
+
+import { User as UserOrmEntity } from '../../../../database/entities/user.entity';
 import { User } from '../../../../entities/user.entity';
+import { UserMapper } from '../../../../mappers/user.mapper';
 
 @Injectable()
 export class SignUpService {
   constructor(
     @Inject('USER_REPOSITORY')
-    private userRepository: Repository<User>,
+    private userRepository: Repository<UserOrmEntity>,
   ) {}
+
   async signUp({
     email,
     password,
@@ -20,15 +25,15 @@ export class SignUpService {
     name: string;
     birthDate: string;
   }): Promise<User> {
-    const user: User = {
+    const user = new User({
       id: randomUUID(),
       email,
-      password,
+      password: await bcrypt.hash(password, await bcrypt.genSalt()),
       name,
       birthDate,
-    };
+    });
 
-    await this.userRepository.insert(user);
+    await this.userRepository.insert(UserMapper.convertToOrmEntity(user));
 
     return user;
   }
