@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm';
-import { User } from '../../entities/user.entity';
+import { User } from './entities/user.entity';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 export const databaseProviders = [
   {
@@ -14,6 +15,7 @@ export const databaseProviders = [
         database: 'emp_consulting',
         entities: [User],
         synchronize: true,
+        namingStrategy: new SnakeNamingStrategy(),
       });
 
       return dataSource.initialize();

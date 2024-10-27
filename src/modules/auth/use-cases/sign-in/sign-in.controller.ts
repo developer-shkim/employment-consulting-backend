@@ -1,15 +1,25 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { SignInDto } from './dtos/sign-in.dto';
 import { SignInService } from './sign-in.service';
+import { JwtService } from '@nestjs/jwt';
 
 @Controller()
 export class SignInController {
-  constructor(private signInService: SignInService) {}
+  constructor(
+    private signInService: SignInService,
+    private jwtService: JwtService,
+  ) {}
 
   @Post('/auth/sign-in')
-  async logIn(@Body() logInDto: SignInDto): Promise<{ accessToken: string }> {
-    const { email, password } = logInDto;
+  async signIn(@Body() signInDto: SignInDto): Promise<{ accessToken: string }> {
+    const { email, password } = signInDto;
+    const user = await this.signInService.signIn(email, password);
 
-    return await this.signInService.signIn(email, password);
+    return {
+      accessToken: await this.jwtService.signAsync({
+        sub: user.id,
+        email: user.email,
+      }),
+    };
   }
 }
