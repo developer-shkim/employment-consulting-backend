@@ -1,12 +1,13 @@
-import { Body, Controller, Param, Post } from '@nestjs/common';
+import { Body, Controller, Post, Req } from '@nestjs/common';
 import { RegisterResumeDto } from './dtos/register-resume.dto';
 import { ResumeDto } from '../../dtos/resume.dto';
+import { Request } from 'express';
 
 @Controller()
 export class RegisterResumeController {
-  @Post('/users/:userId/resumes')
+  @Post('/resumes')
   async registerResume(
-    @Param('userId') userId: string,
+    @Req() request: Request,
     @Body() registerResumeDto: RegisterResumeDto,
   ): Promise<ResumeDto> {
     const { careerHistories, educationHistories } = registerResumeDto;
