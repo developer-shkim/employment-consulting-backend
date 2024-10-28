@@ -6,6 +6,10 @@ import { AuthModule } from './modules/auth/auth.module';
 import { FitnessModule } from './modules/fitness/fitness.module';
 import { ResumesModule } from './modules/resumes/resumes.module';
 import { PositionsModule } from './modules/positions/positions.module';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './guards/auth.guard';
+import { DatabaseModule } from './database/database.module';
+import { userProviders } from './providers/user.providers';
 
 @Module({
   imports: [
@@ -15,6 +19,14 @@ import { PositionsModule } from './modules/positions/positions.module';
     FitnessModule,
     ResumesModule,
     PositionsModule,
+    DatabaseModule,
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard,
+    },
+    ...userProviders,
   ],
 })
 export class AppModule {}
