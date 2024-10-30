@@ -42,7 +42,8 @@ erDiagram
 		Company ||--o{ CompanyPosition : has
 		User {
 			string id "식별자"
-			string email "이름"
+            string name "이름"
+			string email "이메일주소(PK)"
 			string password "암호화된 비밀번호"
 			string birthDate "생년월일(YYMMDD)"
 		}
@@ -50,14 +51,14 @@ erDiagram
 		    string id "식별자"
 			string userId "사용자 식별자"
 			string companyName "회사명"
-			Date startDate "근무시작일(ISO string)"
-            Date endDate "근무종료일(ISO string)"
+			Date startDate "입사일(ISO string)"
+            Date endDate "퇴사일(ISO string)"
 			string status "재직 상태 예) IN_OFFICE, RESIGNED"
 			string businessCategory "업종 분류 예) 이커머스 서비스"
 		}
 		UserCareerDetail {
             string id "식별자"
-            string userCareerId "사용자 경력 식별자"
+            string careerId "사용자 경력 식별자"
             Date startDate "시작일(ISO string)"
             Date endDate "종료일(ISO string)"
             string title "제목 예) 실시간 인기 순위 조회 개발"
@@ -69,7 +70,7 @@ erDiagram
 			string schoolName "학교명"
 			Date startDate "입학일(ISO string)"
 			Date endDate "졸업일(ISO string)"
-			string degree "학위 예) HighSchool(고등), Bachelor(학사), Master(석사), Doctorate(박사)"
+			string degree "학위 예) HIGH_SCHOOL(고등), BACHELOR(학사), MASTER(석사), DOCTORATE(박사)"
 			string status "재학 상태 예) IN_SCHOOL, GRADUATED"
 			string content "상세 내용 예) 전공, 부전공, 학점, 졸업논문"
 		}
@@ -79,7 +80,7 @@ erDiagram
 			string name "포지션 이름 예) Backend Engineer"
 			float minCareerLevel "최소 연차 예) 1(년)"
 			float maxCareerLevel "최대 연차 예) 3(년)"
-            string minEducationLevel "학력 예) HighSchool(고등), Bachelor(학사), Master(석사), Doctorate(박사)"
+            string minEducationLevel "학력 예) HIGH_SCHOOL(고등), BACHELOR(학사), MASTER(석사), DOCTORATE(박사)"
 		}
 		CompanyPositionDetail {
 			string id "식별자"

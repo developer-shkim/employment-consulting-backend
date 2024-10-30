@@ -1,14 +1,14 @@
 import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 import { Repository } from 'typeorm';
-import { User as UserOrmEntity } from '../../../../database/entities/user.entity';
+import { UserOrmEntity } from '../../../../database/entities/user-orm-entity';
 import { User } from '../../../../entities/user.entity';
 import { UserMapper } from '../../../../mappers/user.mapper';
+import { USER_REPOSITORY } from '../../../../database/providers/user.providers';
 
 @Injectable()
 export class SignInService {
   constructor(
-    @Inject('USER_REPOSITORY')
+    @Inject(USER_REPOSITORY)
     private userRepository: Repository<UserOrmEntity>,
   ) {}
 
