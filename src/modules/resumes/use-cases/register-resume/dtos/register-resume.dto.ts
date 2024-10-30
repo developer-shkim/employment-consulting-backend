@@ -1,9 +1,9 @@
-import { CareerHistoryDto } from '../../../dtos/career-history.dto';
-import { EducationHistoryDto } from '../../../dtos/education-history.dto';
+import { CareerDto } from '../../../dtos/career.dto';
+import { EducationDto } from '../../../dtos/education.dto';
 
 export class RegisterResumeDto {
   constructor(
-    public readonly careerHistories: CareerHistoryDto[],
-    public readonly educationHistories: EducationHistoryDto[],
+    public readonly careers: CareerDto[],
+    public readonly educations: EducationDto[],
   ) {}
 }

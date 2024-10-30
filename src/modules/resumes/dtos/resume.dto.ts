@@ -1,9 +1,14 @@
-import { CareerHistoryDto } from './career-history.dto';
-import { EducationHistoryDto } from './education-history.dto';
+import { Career } from '../../../entities/career.entity';
+import { Education } from '../../../entities/education.entity';
 
 export class ResumeDto {
   constructor(
-    public readonly careerHistories: CareerHistoryDto[],
-    public readonly educationHistories: EducationHistoryDto[],
-  ) {}
+    public readonly careers: Career[],
+    public readonly educations: Education[],
+  ) {
+    return {
+      careers,
+      educations,
+    };
+  }
 }

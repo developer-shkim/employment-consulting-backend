@@ -9,7 +9,7 @@ import { PositionsModule } from './modules/positions/positions.module';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './guards/auth.guard';
 import { DatabaseModule } from './database/database.module';
-import { userProviders } from './providers/user.providers';
+import { userProviders } from './database/providers/user.providers';
 
 @Module({
   imports: [

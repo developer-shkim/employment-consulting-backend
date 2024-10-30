@@ -13,6 +13,7 @@ import { Reflector } from '@nestjs/core';
 import { Repository } from 'typeorm';
 import { UserOrmEntity } from '../database/entities/user-orm-entity';
 import { UserMapper } from '../mappers/user.mapper';
+import { USER_REPOSITORY } from '../database/providers/user.providers';
 
 type JsonWebToken = {
   sub: string;
@@ -26,7 +27,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private jwtService: JwtService,
     private reflector: Reflector,
-    @Inject('USER_REPOSITORY')
+    @Inject(USER_REPOSITORY)
     private userRepository: Repository<UserOrmEntity>,
   ) {}
 

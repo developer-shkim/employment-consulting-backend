@@ -3,14 +3,15 @@ import { Repository } from 'typeorm';
 import { randomUUID } from 'crypto';
 import * as bcrypt from 'bcrypt';
 
-import { User as UserOrmEntity } from '../../../../database/entities/user.entity';
+import { UserOrmEntity } from '../../../../database/entities/user-orm-entity';
 import { User } from '../../../../entities/user.entity';
 import { UserMapper } from '../../../../mappers/user.mapper';
+import { USER_REPOSITORY } from '../../../../database/providers/user.providers';
 
 @Injectable()
 export class SignUpService {
   constructor(
-    @Inject('USER_REPOSITORY')
+    @Inject(USER_REPOSITORY)
     private userRepository: Repository<UserOrmEntity>,
   ) {}
 
