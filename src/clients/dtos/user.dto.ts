@@ -1,13 +1,13 @@
 export class UserDto {
+  handle: string;
+  tier: number;
+  rating: number;
+
   constructor(props: { handle: string; tier: number; rating: number }) {
     this.handle = props.handle;
     this.tier = props.tier;
     this.rating = props.rating;
   }
-
-  handle: string;
-  tier: number;
-  rating: number;
 
   get tierName(): string {
     if (this.tier === 0) return 'Unrated';

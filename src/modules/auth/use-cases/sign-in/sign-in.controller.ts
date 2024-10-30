@@ -2,7 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { SignInDto } from './dtos/sign-in.dto';
 import { SignInService } from './sign-in.service';
 import { JwtService } from '@nestjs/jwt';
-import { Public } from '../../../../decorators';
+import { Public } from '@decorators';
 
 @Controller()
 export class SignInController {

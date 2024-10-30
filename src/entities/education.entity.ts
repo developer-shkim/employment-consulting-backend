@@ -19,6 +19,15 @@ export type EducationProps = {
 };
 
 export class Education {
+  private readonly _id: string;
+  private readonly _userId: string;
+  private readonly _schoolName: string;
+  private readonly _startDate: Date;
+  private readonly _endDate: Date | null;
+  private readonly _degree: (typeof EducationDegree)[number];
+  private readonly _status: (typeof EducationStatus)[number];
+  private readonly _content: string;
+
   constructor(props: EducationProps) {
     const {
       id,
@@ -40,15 +49,6 @@ export class Education {
     this._status = status;
     this._content = content;
   }
-
-  private readonly _id: string;
-  private readonly _userId: string;
-  private readonly _schoolName: string;
-  private readonly _startDate: Date;
-  private readonly _endDate: Date | null;
-  private readonly _degree: (typeof EducationDegree)[number];
-  private readonly _status: (typeof EducationStatus)[number];
-  private readonly _content: string;
 
   get id(): string {
     return this._id;

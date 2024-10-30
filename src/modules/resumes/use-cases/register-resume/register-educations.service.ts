@@ -2,14 +2,14 @@ import { Inject, Injectable } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
 import { randomUUID } from 'crypto';
 
-import { UserOrmEntity } from '../../../../database/entities/user-orm-entity';
-import { UserMapper } from '../../../../mappers/user.mapper';
-import { USER_REPOSITORY } from '../../../../database/providers/user.providers';
-import { DATA_SOURCE } from '../../../../database/providers/database.providers';
+import { UserOrmEntity } from '@database/entities/user-orm-entity';
+import { UserMapper } from '@mappers/user.mapper';
+import { USER_REPOSITORY } from '@database/providers/user.providers';
+import { DATA_SOURCE } from '@database/providers/database.providers';
 import { EducationDto } from '../../dtos/education.dto';
-import { Education } from '../../../../entities/education.entity';
-import { EducationMapper } from '../../../../mappers/education.mapper';
-import { EducationOrmEntity } from '../../../../database/entities/education-orm-entity';
+import { Education } from '@entities/education.entity';
+import { EducationMapper } from '@mappers/education.mapper';
+import { EducationOrmEntity } from '@database/entities/education-orm-entity';
 
 @Injectable()
 export class RegisterEducationsService {

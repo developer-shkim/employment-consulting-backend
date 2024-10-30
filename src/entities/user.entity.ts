@@ -21,29 +21,29 @@ export class User {
 
   private _id: string;
 
-  private _name: string;
-
-  private _email: string;
-
-  private _password: string;
-
-  private _birthDate: string;
-
   get id(): string {
     return this._id;
   }
+
+  private _name: string;
 
   get name(): string {
     return this._name;
   }
 
+  private _email: string;
+
   get email(): string {
     return this._email;
   }
 
+  private _password: string;
+
   get password(): string {
     return this._password;
   }
+
+  private _birthDate: string;
 
   get birthDate(): string {
     return this._birthDate;

@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ISolvedAcClient } from '../../../../clients/solved-ac.client.interface';
+import { ISolvedAcClient } from '@clients/solved-ac.client.interface';
 import { SOLVED_AC_CLIENT } from '../../symbols/di-tokens';
-import { UserDto } from '../../../../clients/dtos/user.dto';
+import { UserDto } from '@clients/dtos/user.dto';
 
 @Injectable()
 export class GetProblemSolvingCompetencyService {
