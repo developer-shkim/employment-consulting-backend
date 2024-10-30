@@ -6,6 +6,7 @@ export type CareerDetailProps = {
   title: string;
   content: string;
 };
+
 export class CareerDetail {
   constructor(props: CareerDetailProps) {
     const { id, careerId, startDate, endDate, title, content } = props;
@@ -19,31 +20,36 @@ export class CareerDetail {
   }
 
   private _id: string;
-  private _careerId: string;
-  private _startDate: Date;
-  private _endDate: Date | null;
-  private _title: string;
-  private _content: string;
 
   get id(): string {
     return this._id;
   }
 
+  private _careerId: string;
+
   get careerId(): string {
     return this._careerId;
   }
+
+  private _startDate: Date;
 
   get startDate(): Date {
     return this._startDate;
   }
 
+  private _endDate: Date | null;
+
   get endDate(): Date | null {
     return this._endDate;
   }
 
+  private _title: string;
+
   get title(): string {
     return this._title;
   }
+
+  private _content: string;
 
   get content(): string {
     return this._content;

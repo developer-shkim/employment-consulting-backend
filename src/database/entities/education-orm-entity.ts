@@ -12,7 +12,7 @@ import {
   EducationProps,
   EducationStatus,
 } from '../../entities/education.entity';
-import { User, UserProps } from '../../entities/user.entity';
+import { User } from '../../entities/user.entity';
 
 @Entity({ name: 'user_educations' })
 export class EducationOrmEntity {

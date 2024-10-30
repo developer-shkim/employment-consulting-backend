@@ -2,16 +2,16 @@ import { Inject, Injectable } from '@nestjs/common';
 import { DataSource, Repository } from 'typeorm';
 import { randomUUID } from 'crypto';
 
-import { UserOrmEntity } from '../../../../database/entities/user-orm-entity';
-import { USER_REPOSITORY } from '../../../../database/providers/user.providers';
+import { UserOrmEntity } from '@database/entities/user-orm-entity';
+import { USER_REPOSITORY } from '@database/providers/user.providers';
 import { CareerDto } from '../../dtos/career.dto';
-import { Career } from '../../../../entities/career.entity';
-import { CareerDetail } from '../../../../entities/career-detail.entity';
-import { DATA_SOURCE } from '../../../../database/providers/database.providers';
-import { CareerMapper } from '../../../../mappers/career.mapper';
-import { UserMapper } from '../../../../mappers/user.mapper';
-import { CareerDetailMapper } from '../../../../mappers/career-detail.mapper';
-import { CareerOrmEntity } from '../../../../database/entities/career-orm-entity';
+import { Career } from '@entities/career.entity';
+import { CareerDetail } from '@entities/career-detail.entity';
+import { DATA_SOURCE } from '@database/providers/database.providers';
+import { CareerMapper } from '@mappers/career.mapper';
+import { UserMapper } from '@mappers/user.mapper';
+import { CareerDetailMapper } from '@mappers/career-detail.mapper';
+import { CareerOrmEntity } from '@database/entities/career-orm-entity';
 
 @Injectable()
 export class RegisterCareersService {

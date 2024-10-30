@@ -37,41 +37,48 @@ export class Career {
   }
 
   private _id: string;
-  private _userId: string;
-  private _companyName: string;
-  private _startDate: Date;
-  private _endDate: Date | null;
-  private _status: (typeof CareerStatus)[number];
-  private _businessCategory: string;
-  private _details: CareerDetail[];
 
   get id(): string {
     return this._id;
   }
 
+  private _userId: string;
+
   get userId(): string {
     return this._userId;
   }
+
+  private _companyName: string;
 
   get companyName(): string {
     return this._companyName;
   }
 
+  private _startDate: Date;
+
   get startDate(): Date {
     return this._startDate;
   }
+
+  private _endDate: Date | null;
 
   get endDate(): Date | null {
     return this._endDate;
   }
 
+  private _status: (typeof CareerStatus)[number];
+
   get status(): (typeof CareerStatus)[number] {
     return this._status;
   }
 
+  private _businessCategory: string;
+
   get businessCategory(): string {
     return this._businessCategory;
   }
+
+  private _details: CareerDetail[];
 
   get details(): CareerDetail[] {
     return this._details;

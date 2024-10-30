@@ -16,6 +16,14 @@
     "noImplicitAny": true,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@clients/*": ["src/clients/*"],
+      "@database/*": ["src/database/*"],
+      "@decorators": ["src/decorators"],
+      "@entities/*": ["src/entities/*"],
+      "@guards/*": ["src/guards/*"],
+      "@mappers/*": ["src/mappers/*"],
+    }
   }
 }

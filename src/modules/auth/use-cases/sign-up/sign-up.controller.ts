@@ -2,7 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { SignUpDto } from './dtos/sign-up.dto';
 import { UserDto } from '../../dtos/user.dto';
 import { SignUpService } from './sign-up.service';
-import { Public } from '../../../../decorators';
+import { Public } from '@decorators';
 
 @Controller()
 export class SignUpController {

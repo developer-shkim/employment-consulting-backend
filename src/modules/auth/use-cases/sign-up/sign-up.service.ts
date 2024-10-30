@@ -3,10 +3,10 @@ import { Repository } from 'typeorm';
 import { randomUUID } from 'crypto';
 import * as bcrypt from 'bcrypt';
 
-import { UserOrmEntity } from '../../../../database/entities/user-orm-entity';
-import { User } from '../../../../entities/user.entity';
-import { UserMapper } from '../../../../mappers/user.mapper';
-import { USER_REPOSITORY } from '../../../../database/providers/user.providers';
+import { UserOrmEntity } from '@database/entities/user-orm-entity';
+import { User } from '@entities/user.entity';
+import { UserMapper } from '@mappers/user.mapper';
+import { USER_REPOSITORY } from '@database/providers/user.providers';
 
 @Injectable()
 export class SignUpService {

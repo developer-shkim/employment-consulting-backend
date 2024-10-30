@@ -28,6 +28,7 @@
     "@nestjs/swagger": "^7.1.1",
     "bcrypt": "^5.1.1",
     "got": "11.8.6",
+    "module-alias": "^2.2.3",
     "mysql2": "^3.11.3",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
@@ -41,6 +42,7 @@
     "@types/bcrypt": "^5.0.2",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.2",
+    "@types/module-alias": "^2.0.4",
     "@types/node": "^20.3.1",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
@@ -74,5 +76,13 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "_moduleAliases": {
+    "@clients": "src/clients",
+    "@database": "src/database",
+    "@decorators": "src/decorators",
+    "@entities": "src/entities",
+    "@guards": "src/guards",
+    "@mappers": "src/mappers"
   }
 }
