@@ -2,8 +2,10 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryColumn,
+  RelationId,
   UpdateDateColumn,
 } from 'typeorm';
 import { UserOrmEntity } from './user-orm-entity';
@@ -20,6 +22,9 @@ export class EducationOrmEntity {
 
   @ManyToOne(() => UserOrmEntity, (user) => user.educations)
   user: UserOrmEntity;
+
+  @RelationId((education: EducationOrmEntity) => education.user)
+  userId: string;
 
   @Column({ comment: '학교명' })
   schoolName: string;
