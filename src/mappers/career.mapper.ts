@@ -5,11 +5,7 @@ import { CareerDetail } from '../entities/career-detail.entity';
 
 export class CareerMapper {
   public static convertToEntity(careerOrmEntity: CareerOrmEntity): Career {
-    const {
-      id: careerId,
-      user: { id: userId },
-      endDate,
-    } = careerOrmEntity;
+    const { id: careerId, endDate } = careerOrmEntity;
 
     const details = careerOrmEntity.careerDetails.map(
       (detail) =>
@@ -21,7 +17,6 @@ export class CareerMapper {
     );
 
     return new Career({
-      userId,
       details,
       ...careerOrmEntity,
       endDate: endDate ?? null,

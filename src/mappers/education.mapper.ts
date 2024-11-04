@@ -6,10 +6,7 @@ export class EducationMapper {
   public static convertToEntity(
     educationOrmEntity: EducationOrmEntity,
   ): Education {
-    const userId = educationOrmEntity.user.id;
-
     return new Education({
-      userId,
       ...educationOrmEntity,
       endDate: educationOrmEntity.endDate ?? null,
     });

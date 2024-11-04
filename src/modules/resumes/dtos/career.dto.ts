@@ -1,23 +1,76 @@
-import { CareerStatus } from '../../../entities/career.entity';
+import { Career, CareerStatus } from '../../../entities/career.entity';
+import { CareerDetail } from '@entities/career-detail.entity';
+
+type CareerDtoProps = {
+  companyName: string;
+  startDate: Date;
+  endDate: Date | null;
+  status: (typeof CareerStatus)[number];
+  businessCategory: string;
+  details: CareerDetailDto[];
+  id?: string;
+};
+
+type CareerDetailDtoProps = {
+  startDate: Date;
+  endDate: Date | null;
+  title: string;
+  content: string;
+  id?: string;
+};
 
 export class CareerDto {
-  constructor(
-    public readonly companyName: string,
-    public readonly startDate: Date,
-    public readonly endDate: Date | null,
-    public readonly status: (typeof CareerStatus)[number],
-    public readonly businessCategory: string,
-    public readonly details: CareerDetailDto[],
-    public readonly id?: string,
-  ) {}
+  public readonly companyName: string;
+  public readonly startDate: Date;
+  public readonly endDate: Date | null;
+  public readonly status: (typeof CareerStatus)[number];
+  public readonly businessCategory: string;
+  public readonly details: CareerDetailDto[];
+  public readonly id?: string;
+
+  constructor(props: CareerDtoProps) {
+    const {
+      companyName,
+      startDate,
+      endDate,
+      status,
+      businessCategory,
+      details,
+      id,
+    } = props;
+
+    this.companyName = companyName;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.status = status;
+    this.businessCategory = businessCategory;
+    this.details = details.map(CareerDetailDto.create);
+    this.id = id;
+  }
+
+  public static create(career: Career) {
+    return new CareerDto(career);
+  }
 }
 
 class CareerDetailDto {
-  constructor(
-    public readonly startDate: Date,
-    public readonly endDate: Date | null,
-    public readonly title: string,
-    public readonly content: string,
-    public readonly id?: string,
-  ) {}
+  public readonly startDate: Date;
+  public readonly endDate: Date | null;
+  public readonly title: string;
+  public readonly content: string;
+  public readonly id?: string;
+
+  constructor(props: CareerDetailDtoProps) {
+    const { startDate, endDate, title, content, id } = props;
+
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.title = title;
+    this.content = content;
+    this.id = id;
+  }
+
+  public static create(careerDetail: CareerDetail) {
+    return new CareerDetailDto(careerDetail);
+  }
 }

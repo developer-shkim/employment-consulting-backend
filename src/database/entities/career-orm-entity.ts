@@ -2,9 +2,11 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   OneToMany,
   PrimaryColumn,
+  RelationId,
   UpdateDateColumn,
 } from 'typeorm';
 import { UserOrmEntity } from './user-orm-entity';
@@ -18,6 +20,9 @@ export class CareerOrmEntity {
 
   @ManyToOne(() => UserOrmEntity, (user) => user.careers)
   user: UserOrmEntity;
+
+  @RelationId((career: CareerOrmEntity) => career.user)
+  userId: string;
 
   @OneToMany(() => CareerDetailOrmEntity, (careerDetail) => careerDetail.career)
   careerDetails: CareerDetailOrmEntity[];

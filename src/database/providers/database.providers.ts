@@ -26,6 +26,7 @@ export const databaseProviders = [
         ],
         synchronize: true,
         namingStrategy: new SnakeNamingStrategy(),
+        logging: true,
       });
 
       return dataSource.initialize();
