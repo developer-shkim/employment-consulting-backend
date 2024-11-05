@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
-import { GetPositionController } from './use-cases/get-position.controller';
-import { GetPositionCollectionController } from './use-cases/get-position-collection.controller';
+import { ListPositionsModule } from './use-cases/list-positions/list-positions.module';
 
 @Module({
-  controllers: [GetPositionController, GetPositionCollectionController],
+  imports: [ListPositionsModule],
 })
 export class PositionsModule {}

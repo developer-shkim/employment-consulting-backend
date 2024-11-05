@@ -49,7 +49,6 @@ export class Education {
     this._status = status;
     this._content = content;
   }
-
   get id(): string {
     return this._id;
   }
