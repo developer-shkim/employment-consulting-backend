@@ -31,15 +31,15 @@ $ yarn run start:prod
 ## ERD
 ```mermaid
 erDiagram
-		User ||--o{ UserCareer : has
-        UserCareer ||--|{ UserCareerDetail : has
-		User ||--o{ UserEducation : has
+		User ||--o{ Career : has
+        Career ||--|{ CareerDetail : has
+		User ||--o{ Education : has
 		User ||--o{ UserPositionFitness : analyze
 		User ||--o{ UserPositionAnalysis : analyze
-		UserPositionFitness ||--|| CompanyPosition : target
-		UserPositionAnalysis |{--|| CompanyPosition : target
-		CompanyPosition ||--o{ CompanyPositionDetail : has
-		Company ||--o{ CompanyPosition : has
+		UserPositionFitness ||--|| Position : target
+		UserPositionAnalysis |{--|| Position : target
+		Position ||--o{ PositionDetail : has
+		Company ||--o{ Position : has
 		User {
 			string id "식별자"
             string name "이름"
@@ -47,7 +47,7 @@ erDiagram
 			string password "암호화된 비밀번호"
 			string birthDate "생년월일(YYMMDD)"
 		}
-		UserCareer {
+		Career {
 		    string id "식별자"
 			string userId "사용자 식별자"
 			string companyName "회사명"
@@ -56,7 +56,7 @@ erDiagram
 			string status "재직 상태 예) IN_OFFICE, RESIGNED"
 			string businessCategory "업종 분류 예) 이커머스 서비스"
 		}
-		UserCareerDetail {
+		CareerDetail {
             string id "식별자"
             string careerId "사용자 경력 식별자"
             Date startDate "시작일(ISO string)"
@@ -64,7 +64,7 @@ erDiagram
             string title "제목 예) 실시간 인기 순위 조회 개발"
             string content "내용 예) 어떤 언어와 기술을 사용하여 개발하였는지 기술"
         }
-		UserEducation {
+		Education {
             string id "식별자"
 			string userId "사용자 식별자"
 			string schoolName "학교명"
@@ -74,18 +74,18 @@ erDiagram
 			string status "재학 상태 예) IN_SCHOOL, GRADUATED"
 			string content "상세 내용 예) 전공, 부전공, 학점, 졸업논문"
 		}
-		CompanyPosition {
+		Position {
 			string id "식별자"
 			string companyId "회사 식별자"
 			string name "포지션 이름 예) Backend Engineer"
-			float minCareerLevel "최소 연차 예) 1(년)"
-			float maxCareerLevel "최대 연차 예) 3(년)"
-            string minEducationLevel "학력 예) HIGH_SCHOOL(고등), BACHELOR(학사), MASTER(석사), DOCTORATE(박사)"
+			int minCareerLevel "최소 연차 예) 1(년)"
+            int maxCareerLevel "최대 연차 예) 3(년)"
+            string minEducationDegree "최소 학력 예) HIGH_SCHOOL(고등), BACHELOR(학사), MASTER(석사), DOCTORATE(박사)"
 		}
-		CompanyPositionDetail {
+		PositionDetail {
 			string id "식별자"
-			string companyPositionId "회사 포지션 식별자"
-			string type "내용 종류 예) required, optional, tag"
+			string PositionId "회사 포지션 식별자"
+			string type "내용 종류 예) REQUIRED, OPTIONAL, TAG"
 			string content "내용 예) 이러이러한 기술에 대한 깊은 이해가 필요합니다."
 		}
 		UserPositionFitness {
@@ -95,12 +95,13 @@ erDiagram
 			float careerLevel "연차 일치도 예) 0.512323"
 			boolean educationLevel "최소학력 만족 여부"
 			float businessCategoryLevel "업종 일치도 예) 0.512323"
+            float dutyLevel "직무 일치도 예) 0.512323"
 		}
 		UserPositionAnalysis {
 			string id "식별자"
 			string userId "사용자 식별자"
 			string positionId "포지션 식별자"
-			string type "분석 종류 예) duty(직무), resume(이력서)"
+			string type "분석 종류 예) DUTY(직무), RESUME(이력서)"
 			string content "분석 내용 예) 직무 분석 결과 이러이러한 부분에 대한 보완이 필요합니다."
 		}
 		Company {

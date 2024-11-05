@@ -4,6 +4,9 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import { CareerOrmEntity } from '../entities/career-orm-entity';
 import { CareerDetailOrmEntity } from '../entities/career-detail-orm-entity';
 import { EducationOrmEntity } from '../entities/education-orm-entity';
+import { PositionOrmEntity } from '../entities/position-orm-entity';
+import { PositionDetailOrmEntity } from '../entities/position-detail-orm-entity';
+import { CompanyOrmEntity } from '../entities/company-orm-entity';
 
 export const DATA_SOURCE = Symbol('DATA_SOURCE');
 
@@ -23,6 +26,9 @@ export const databaseProviders = [
           CareerOrmEntity,
           CareerDetailOrmEntity,
           EducationOrmEntity,
+          PositionOrmEntity,
+          PositionDetailOrmEntity,
+          CompanyOrmEntity,
         ],
         synchronize: true,
         namingStrategy: new SnakeNamingStrategy(),
