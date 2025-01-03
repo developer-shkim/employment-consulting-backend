@@ -4,6 +4,9 @@
 - 제공하는 API 는 아래와 같고 http://localhost:3000/swagger 에서 확인할 수 있습니다.
 <img width="1217" alt="스크린샷 2025-01-03 오후 11 14 47" src="https://github.com/user-attachments/assets/5e5c02d4-d1ff-4c1f-85d2-482bf5645e85" />
 
+## 기술 스택
+- Node.js, NestJs Framework, MySQL, TypeORM
+
 ## Installation
 
 ```bash
